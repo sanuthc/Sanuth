@@ -1,0 +1,23 @@
+import pandas as pd
+import numpy as np
+
+# Sample customer data using pandas
+data = {
+    "name": ["Alice", "Bob", "Charlie"],
+    "email": ["alice@example.com", "bob@example.com", "charlie@example.com"],
+    "age": [22, 35, 28]
+}
+
+df = pd.DataFrame(data)
+
+# Function to create message using numpy
+def create_message(name, age):
+    if np.less(age, 30):
+        return f"Hi {name}, enjoy 20% off for young shoppers!"
+    else:
+        return f"Hi {name}, exclusive premium deals are waiting for you!"
+
+# Loop through DataFrame and print messages
+for index, row in df.iterrows():
+    message = create_message(row["name"], row["age"])
+    print(f"To: {row['email']}\n{message}\n")

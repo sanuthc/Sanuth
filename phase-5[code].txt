@@ -1,0 +1,32 @@
+import random
+import openai
+from datetime import datetime
+
+def personalize_email(template, user_data):
+    personalized_content = template.format(**user_data)
+    return personalized_content
+
+def generate_email():
+    template = input("Enter the email template: ")
+    user_data = {
+        'name': input("Enter user name: "),
+        'product': input("Enter product: "),
+        'date': datetime.now().strftime("%B %d, %Y")
+    }
+    personalized_email = personalize_email(template, user_data)
+    print("\nGenerated Email:")
+    print(personalized_email)
+    return personalized_email
+
+def chatbot_subject_line():
+    subjects = ['Promotional Offer', 'Limited Time Deal', 'Exclusive Access', 'Special Discount']
+    subject = random.choice(subjects)
+    question = f'Generate a subject line about {subject}'
+    response = chatbot.get_response(question)
+    return response
+
+def main():
+    chatbot = ChatBot()
+    subject_line = chatbot_subject_line()
+    print("\nGenerated Subject Line:")
+    print(subject_line)
